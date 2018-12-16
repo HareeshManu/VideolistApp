@@ -1,3 +1,26 @@
 page-home {
-
+    background: black  !important;
+    .setbackground{
+        background: black !important;
+        color: white !important;
+        font-family: TitilliumWeb;
+    }
+    .fixline{
+        height: 22px;
+        margin-bottom: 7px;
+        padding: 6px;
+        background: rgb(0, 0, 0);
+        color: white;
+        font-family: TitilliumWeb;
+    }
+    .fixGrid{
+        background: black;
+    }
+    .title{
+        color: white !important;
+        font-family: TitilliumWeb;
+    }
+    .toolbar-background-md {
+        background: #000;
+    }
 }

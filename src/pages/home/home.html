@@ -1,14 +1,30 @@
-<ion-header>
+<ion-header class="setbackground">
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title class="setbackground">
+      <div class="title">{{title}}</div>
     </ion-title>
   </ion-navbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchItem($event)" class="setbackground">
+      </ion-searchbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<ion-content>
+  <ion-grid class="fixGrid">
+    <ion-row>
+      <ng-template ngFor let-item [ngForOf]="filterData" let-i="index">
+        <ion-col *ngFor="let data of item.page['content-items'].content" col-4 no-padding>
+          <ion-card class="setbackground">
+            <img [src]="path+data['poster-image'] != path+'posterthatismissing.jpg' ? path+data['poster-image'] :  defaultimgPath" />
+            <ion-card-content class="fixline">
+              {{data.name}}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ng-template>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
